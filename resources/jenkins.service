@@ -1,0 +1,11 @@
+[Unit]
+Description=Jenkins
+
+[Service]
+User=jenkins
+WorkingDirectory=/home/jenkins/jenkins_home
+ExecStart=/home/jenkins/run.bash
+
+[Install]
+WantedBy=multi-user.target
+

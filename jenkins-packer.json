@@ -1,0 +1,42 @@
+{
+  "variables": {
+    "source_image_family": "ubuntu-1804-lts",
+    "machine_type": "n1-standard-1",
+    "region" : "europe-west2",
+    "zone" : "europe-west2-c",
+    "project_id": "fair-melody-246109"
+  },
+  "builders": [{
+      "type": "googlecompute",
+      "project_id": "fair-melody-246109",
+      "machine_type": "n1-standard-1",
+      "source_image_family": "ubuntu-1804-lts",
+      "region": "europe-west2",
+      "zone": "europe-west2-c",
+      "image_description": "Jenkins Packer",
+      "image_name": "jenkins-pack-{{timestamp}}",
+      "disk_size": 16,
+      "disk_type": "pd-ssd",
+      "ssh_username": "jenkins",
+      "account_file": "/home/vagrant/.gcp/terraform_key.json"
+    }],
+    "provisioners": [{
+      "type": "file",
+      "source": "resources/bash_profile",
+      "destination": "/home/jenkins/.bash_profile"
+    },
+     {
+      "type": "file",
+      "source": "resources/jenkins.service",
+      "destination": "/home/jenkins/jenkins.service"
+    },
+     {
+      "type": "file",
+      "source": "resources/run.bash",
+      "destination": "/home/jenkins/run.bash"
+    },
+     {
+      "type": "shell",
+      "script": "resources/jenkins_install.bash"
+    }]
+}

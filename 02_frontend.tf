@@ -5,7 +5,7 @@ resource "google_compute_instance" "frontend" {
 	tags = ["${var.name}-${var.frontend}"]
 	boot_disk {
 		initialize_params {
-			image = "${var.image_ID}"
+			image = "${var.frontend_image_ID}"
 		}
 	}
 	network_interface {
