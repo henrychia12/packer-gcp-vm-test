@@ -29,9 +29,10 @@ resource "google_compute_instance" "jenkins" {
 }
 
 resource "google_compute_disk" "jenkins-data" {
-	name  = "${var.CI_SERVER}-disk"
-	type  = "pd-ssd"
-	zone  = "${var.zone}"
+	name   = "${var.CI_SERVER}-disk"
+	type   = "pd-standard"
+	zone   = "${var.zone}"
+	size   = 90
 	labels = {
 		environment = "jenkins"
 	}

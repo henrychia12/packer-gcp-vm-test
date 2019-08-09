@@ -22,21 +22,12 @@
     }],
     "provisioners": [{
       "type": "file",
-      "source": "resources/bash_profile",
-      "destination": "/home/jenkins/.bash_profile"
-    },
-     {
-      "type": "file",
-      "source": "resources/jenkins.service",
+      "source": "service-files/jenkins.service",
       "destination": "/home/jenkins/jenkins.service"
     },
      {
-      "type": "file",
-      "source": "resources/run.bash",
-      "destination": "/home/jenkins/run.bash"
-    },
-     {
       "type": "shell",
-      "script": "resources/jenkins_install.bash"
+      "script": "scripts/jenkins-setup.sh",
+      "pause_before": "10s"
     }]
 }
