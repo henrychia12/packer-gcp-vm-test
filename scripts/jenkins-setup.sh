@@ -1,10 +1,12 @@
 #!/bin/bash
 
 # install dependencies
-sudo apt get update
-sudo apt install -y openjdk-8-jdk wget vim
+sudo apt update
+sudo apt install -y openjdk-8-jdk
+sudo apt install -y wget
+sudo apt install -y vim
 
-#creat user for Jenkins
+#create user for Jenkins
 sudo useradd --create-home jenkins
 #set jenkins default shell to bash
 sudo usermod --shell /bin/bash jenkins
@@ -28,6 +30,6 @@ sudo systemctl daemon-reload
 echo Service loaded
 
 #start Jenkins
-sudo systemctl start jenkins
+sudo systemctl enable jenkins
 echo Jenkins started ... Go to localhost:8080
 
